@@ -22,7 +22,7 @@ for word in tokenized_text[1:]:
     last_word = word
 
 nonEndWords = ['and', 'the', 'to', 'is', 'for', 'going']
-nonStartWords = ['s']
+nonStartWords = ['s','and','is']
 
 def getRandomWord(wordDict, wordType = ''):
     # Word types can be Start or End of left blank
@@ -30,10 +30,10 @@ def getRandomWord(wordDict, wordType = ''):
     while True:
         randomWord = random.choice(list(wordDict.keys()))
 
-        if wordType == 'Start':
+        if wordType == 'start':
             if randomWord not in nonStartWords:
                 return randomWord
-        elif wordType == 'End':
+        elif wordType == 'end':
             if randomWord not in nonEndWords:
                 return randomWord
         else:
@@ -65,8 +65,13 @@ def walk_graph(graph, distance = 6, start_node=None):
         graph, distance=distance-1,
         start_node=chosen_word)
 
+n = random.randint(2, 5)
 
-for i in range(10):
+def getChain():
+    chain = ' '.join(walk_graph(markov_graph, distance=n))
+    return chain
+    
+"""for i in range(10):
     n = random.randint(2, 5)
     print(' '.join(walk_graph(
-        markov_graph, distance=n)), '\n')
+        markov_graph, distance=n)), '\n')"""
