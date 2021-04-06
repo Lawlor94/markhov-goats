@@ -28,4 +28,4 @@ jobs:
     - name: execute script
       run: |
         cd markovGoats
-        dir
+        python tweeter.py
